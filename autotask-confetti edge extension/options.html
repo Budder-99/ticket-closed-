@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Autotask Confetti Settings</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 1rem 1.5rem;
+      max-width: 480px;
+    }
+    h1 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      margin: 0.5rem 0;
+      gap: 0.5rem;
+    }
+    input[type="number"] {
+      width: 6rem;
+    }
+    button {
+      margin-top: 0.75rem;
+    }
+    small {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Autotask Confetti Settings</h1>
+
+  <label>
+    Confetti pieces
+    <input id="pieceCount" type="number" min="10" max="500" step="10" />
+  </label>
+  <small>How many confetti pieces to spawn per click.</small>
+
+  <label>
+    <input id="physicsEnabled" type="checkbox" />
+    Enable physics mode
+  </label>
+  <small>If disabled, only the simple burst will run.</small>
+
+  <div>
+    <button id="save">Save</button>
+    <span id="status" style="margin-left:0.5rem;"></span>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

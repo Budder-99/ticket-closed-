@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Autotask Confetti</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      padding: 0.75rem 1rem;
+      min-width: 260px;
+      max-width: 320px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #111827;
+      color: #e5e7eb;
+    }
+
+    h1 {
+      font-size: 0.95rem;
+      margin: 0 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h1 span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #f97316, #ec4899, #3b82f6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 span.icon::before,
+    h1 span.icon::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: 3px;
+      background-image:
+        radial-gradient(circle at 20% 20%, #fbbf24 0 2px, transparent 2px),
+        radial-gradient(circle at 70% 40%, #22c55e 0 2px, transparent 2px),
+        radial-gradient(circle at 40% 80%, #3b82f6 0 2px, transparent 2px);
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-bottom: 0.6rem;
+    }
+
+    .card {
+      border-radius: 8px;
+      background: linear-gradient(135deg, #111827, #020617);
+      border: 1px solid #1f2937;
+      padding: 0.6rem 0.75rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0.4rem 0;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .label-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .label-text span.title {
+      font-weight: 500;
+    }
+
+    .label-text span.hint {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    input[type="number"] {
+      width: 5rem;
+      padding: 0.2rem 0.3rem;
+      border-radius: 4px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.8rem;
+      text-align: right;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 1px #3b82f6;
+    }
+
+    select {
+      min-width: 7rem;
+      padding: 0.2rem 0.3rem;
+      border-radius: 4px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.8rem;
+    }
+
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.4rem 0;
+      font-size: 0.8rem;
+    }
+
+    .toggle input {
+      accent-color: #3b82f6;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: #f9fafb;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.45);
+    }
+
+    button.secondary {
+      margin-top: 0.4rem;
+      background: #111827;
+      border: 1px solid #374151;
+      color: #e5e7eb;
+      box-shadow: none;
+    }
+
+    button:hover {
+      filter: brightness(1.05);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #1f2937;
+      margin: 0.6rem 0;
+    }
+
+    #status {
+      font-size: 0.75rem;
+      margin-top: 0.3rem;
+      min-height: 1em;
+      color: #a7f3d0;
+    }
+
+    .small {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <span class="icon"></span>
+    <span>Autotask Confetti</span>
+  </h1>
+  <div class="subtitle">Adjust confetti settings when closing a ticket!</div>
+
+  <div class="card">
+    <label>
+      <span class="label-text">
+        <span class="title">Confetti pieces</span>
+        <span class="hint">Lower for subtle, higher for chaos.</span>
+      </span>
+      <input id="pieceCount" type="number" min="10" max="500" step="10" />
+    </label>
+
+    <label>
+      <span class="label-text">
+        <span class="title">Confetti size</span>
+        <span class="hint">0.5 = smaller, 2 = larger.</span>
+      </span>
+      <input id="sizeMultiplier" type="number" min="0.5" max="3" step="0.1" />
+    </label>
+
+    <label>
+      <span class="label-text">
+        <span class="title">Duration (ms)</span>
+        <span class="hint">Higher lasts longer (e.g. 1500–4000).</span>
+      </span>
+      <input id="durationMs" type="number" min="500" max="6000" step="500" />
+    </label>
+
+    <label>
+      <span class="label-text">
+        <span class="title">Colour theme</span>
+        <span class="hint">Classic, pink pastel, or company.</span>
+      </span>
+      <select id="colorMode">
+        <option value="classic">Classic</option>
+        <option value="pink">Pink pastel</option>
+        <option value="company">Company</option>
+      </select>
+    </label>
+
+    <label>
+      <span class="label-text">
+        <span class="title">Origin</span>
+        <span class="hint">Corners or bottom of the screen.</span>
+      </span>
+      <select id="originMode">
+        <option value="corners">Top corners</option>
+        <option value="bottomCorners">Bottom corners</option>
+      </select>
+    </label>
+
+    <div class="toggle">
+      <input id="physicsEnabled" type="checkbox" />
+      <span>Enable physics mode</span>
+    </div>
+
+    <button id="save">
+      Save settings
+    </button>
+    <div id="status"></div>
+
+    <hr />
+
+    <button id="test" class="secondary">
+      Test confetti now
+    </button>
+    <div class="small" style="margin-top:0.25rem;">
+      If testing doesn’t work, refresh the ticket tab and try again.
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

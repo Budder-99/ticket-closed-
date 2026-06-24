@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Autotask Confetti",
+  "version": "1.7.0",
+  "description": "Adds confetti when clicking Save & Close in Autotask.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Autotask Confetti"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://ww16.autotask.net/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
