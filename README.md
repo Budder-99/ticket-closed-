@@ -3,6 +3,8 @@
 Autotask Confetti adds a celebratory burst of confetti when you close a ticket in Autotask. 
 It includes a popup so you can tweak how the effect looks and feels without touching the code.
 
+<img width="800" height="326" alt="confetti" src="https://github.com/user-attachments/assets/2418ca37-3a74-4922-8cc4-601dd8c09dbd" />
+
 <img width="294" height="600" alt="image (3)" src="https://github.com/user-attachments/assets/9113ec6e-0aa4-422a-83dd-9df4ca92261b" />
 
 
